@@ -1,5 +1,10 @@
-module.exports = function (host, paths) {
-    const middleware = paths[host];
+/**
+ * A matcher that matches **specific** domains to their middlewares.
+ * 
+ * @public
+ */
+module.exports = function (request, paths) {
+    const middleware = paths[request.hostname];
 
     if (!middleware) {
         return;
