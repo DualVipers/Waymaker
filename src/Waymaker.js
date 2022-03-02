@@ -6,7 +6,7 @@ module.exports = function (options) {
      *
      * @param {Object} options
      * @param {WayfinderMatcher} options.matcher - The matching algorithm of the `Wayfinder`.
-     * @param {Object} options.match - The options for the matching algorithm of the `Wayfinder
+     * @param {Object} options.match - The options for the matching algorithm of the `Wayfinder.
      * `.
      * @return {Wayfinder} - A `Wayfinder` which can be used as a middleware function.
      * @public
@@ -14,7 +14,7 @@ module.exports = function (options) {
     const wayfinder = function (req, res, next) {
         const middleware = this.matcher(
             req,
-            this.paths,
+            this.mappings,
             this.opts.match || {}
         );
 
@@ -22,8 +22,8 @@ module.exports = function (options) {
             middleware(req, res, next);
         }
 
-        if (this.paths["*"]) {
-            this.paths["*"](req, res, next);
+        if (this.mappings["*"]) {
+            this.mappings["*"](req, res, next);
         }
 
         next();
@@ -44,26 +44,26 @@ module.exports = function (options) {
     wayfinder.matcher = wayfinder.opts.matcher || domainMatcher;
 
     /**
-     * The path mappings of the `Wayfinder`.
+     * The mappings of the `Wayfinder`.
      *
      * @private
      */
-    wayfinder.paths = {
+    wayfinder.mappings = {
         "*": function (_req, _res, next) {
             next();
         },
     };
 
     /**
-     * Initializes a new `path` to the `Wayfinder`.
+     * Initializes a new `mapping` to the `Wayfinder`.
      *
-     * @param {string} path - The `path` that the `Wayfinder` should match.
-     * @param {Function} middleware - The middleware function this `path` should map to.
+     * @param {string} mapping - The `mapping` that the `Wayfinder` should match.
+     * @param {Function} middleware - The middleware function this `mapping` should map to.
      * @returns {void}
      * @public
      */
-    wayfinder.register = function (path, middleware) {
-        this.paths[path] = middleware;
+    wayfinder.register = function (mapping, middleware) {
+        this.mappings[mapping] = middleware;
     };
 
     return wayfinder;

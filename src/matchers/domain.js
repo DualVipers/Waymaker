@@ -3,8 +3,8 @@
  * 
  * @public
  */
-module.exports = function (request, paths) {
-    const middleware = paths[request.hostname];
+module.exports = function (request, mappings, options) {
+    const middleware = mappings[request.hostname];
 
     if (!middleware) {
         return;
