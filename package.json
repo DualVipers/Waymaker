@@ -5,7 +5,8 @@
     "main": "src/index.js",
     "types": "main.d.ts",
     "scripts": {
-        "build": "tsc"
+        "style": "prettier --check .",
+        "lint": "eslint"
     },
     "repository": {
         "type": "git",
@@ -16,5 +17,11 @@
     "bugs": {
         "url": "https://github.com/DualVipers/WayFinder/issues"
     },
-    "homepage": "https://github.com/DualVipers/WayFinder#readme"
+    "homepage": "https://github.com/DualVipers/WayFinder#readme",
+    "devDependencies": {},
+    "dependencies": {
+        "eslint": "8.10.0",
+        "eslint-config-prettier": "8.5.0",
+        "prettier": "2.5.1"
+    }
 }

@@ -1,6 +1,6 @@
 /**
  * A matcher that matches **specific** domains to their middlewares.
- * 
+ *
  * @type {WayfinderMatcher}
  * @public
  */
@@ -10,7 +10,7 @@ module.exports = {
      *
      * @param {Object} request - The `request` that the `Wayfinder` should match.
      * @param {WayfinderMappings} maps - The maps this `request` should map to.
-     * 
+     *
      * @returns {Function | void} Either the match middleware function or void.
      * @public
      */
@@ -22,5 +22,5 @@ module.exports = {
         }
 
         return middleware;
-    }
-}
+    },
+};

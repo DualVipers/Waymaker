@@ -1,0 +1,10 @@
+{
+    "extends": ["eslint:recommended", "prettier"],
+    "parserOptions": {
+        "ecmaVersion": 13
+    },
+    "env": {
+        "es6": true,
+        "node": true
+    }
+}

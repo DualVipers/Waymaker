@@ -2,7 +2,7 @@ const domainMatcher = require("./matchers/domain");
 
 /**
  * A middleware that routes based on the `maps` provided.
- * 
+ *
  * @public
  */
 module.exports = class Wayfinder {
@@ -25,7 +25,7 @@ module.exports = class Wayfinder {
      * The middleware function of the `Wayfinder`.
      *
      * @type {Function}
-     * 
+     *
      * @public
      */
     middleware = (req, res, next) => {
