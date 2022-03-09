@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "description": "An Express Middleware That Routes Based On Domain",
     "main": "src/index.js",
+    "types": "main.d.ts",
     "scripts": {
         "build": "tsc"
     },
