@@ -1,14 +1,26 @@
 /**
  * A matcher that matches **specific** domains to their middlewares.
  * 
+ * @type {WayfinderMatcher}
  * @public
  */
-module.exports = function (request, mappings, options) {
-    const middleware = mappings[request.hostname];
+module.exports = {
+    /**
+     * Matches **specific** domains to their middlewares based on the provided info.
+     *
+     * @param {Object} request - The `request` that the `Wayfinder` should match.
+     * @param {WayfinderMappings} maps - The maps this `request` should map to.
+     * 
+     * @returns {Function | void} Either the match middleware function or void.
+     * @public
+     */
+    match: function (request, maps) {
+        const middleware = maps[request.hostname];
 
-    if (!middleware) {
-        return;
+        if (!middleware) {
+            return;
+        }
+
+        return middleware;
     }
-
-    return middleware;
-};
+}
