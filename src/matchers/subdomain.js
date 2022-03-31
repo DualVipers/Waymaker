@@ -28,12 +28,12 @@ module.exports = {
                   .join(".") == baseDomain
                 ? request.hostname
                       .split(".")
-                      .splice(-splitDomain.length)
+                      .slice(0, -splitDomain.length)
                       .join(".")
                 : "*"
             : request.hostname
                   .split(".")
-                  .splice(-(baseDomainLength || 2))
+                  .slice(0, -(baseDomainLength || 2))
                   .join(".");
 
         const middleware = maps[subdomain];
