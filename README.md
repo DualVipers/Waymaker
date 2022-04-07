@@ -54,4 +54,4 @@ Now run the app.js.
 
 When you visit `hi.localhost` in your browser you should see `hi`.
 
-When you visit `bye.localhost` in your browser you should see `hi`.
+When you visit `bye.localhost` in your browser you should see `bye`.
