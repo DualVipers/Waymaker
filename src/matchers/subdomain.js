@@ -1,14 +1,14 @@
 /**
  * A matcher that matches subdomains to their middlewares.
  *
- * @type {WayfinderMatcher}
+ * @type {WaymakerMatcher}
  * @public
  */
 module.exports = {
     /**
      * Matches subdomains to their middlewares based on the provided info.
      *
-     * @param {Object} request - The `request` that the `Wayfinder` should match.
+     * @param {Object} request - The `request` that the `Waymaker` should match.
      * @param {Object.<string, Function>} maps - The maps this `request` should map to.
      *
      * @returns {Function | void} Either the match middleware function or void.

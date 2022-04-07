@@ -5,13 +5,13 @@ const domainMatcher = require("./matchers/domain");
  *
  * @public
  */
-module.exports = class Wayfinder {
+module.exports = class Waymaker {
     /**
-     * Creates a new `Wayfinder` with the given `options`.
+     * Creates a new `Waymaker` with the given `options`.
      *
-     * @param {Object} options - The options for both the `Wayfinder` and the `WayfinderMatcher`.
-     * @param {WayfinderMatcher} options.matcher - The matching algorithm of the `Wayfinder`.
-     * @param {Object} options.match - The options for the matching algorithm of the `Wayfinder.
+     * @param {Object} options - The options for both the `Waymaker` and the `WaymakerMatcher`.
+     * @param {WaymakerMatcher} options.matcher - The matching algorithm of the `Waymaker`.
+     * @param {Object} options.match - The options for the matching algorithm of the `Waymaker.
      *
      * @public
      */
@@ -22,7 +22,7 @@ module.exports = class Wayfinder {
     }
 
     /**
-     * The middleware function of the `Wayfinder`.
+     * The middleware function of the `Waymaker`.
      *
      * @type {Function}
      *
@@ -47,7 +47,7 @@ module.exports = class Wayfinder {
     };
 
     /**
-     * The options of the `Wayfinder`.
+     * The options of the `Waymaker`.
      *
      * @type {Object}
      * @private
@@ -55,15 +55,15 @@ module.exports = class Wayfinder {
     #opts;
 
     /**
-     * The matching algorithm of the `Wayfinder`.
+     * The matching algorithm of the `Waymaker`.
      *
-     * @type {WayfinderMatcher}
+     * @type {WaymakerMatcher}
      * @private
      */
     #matcher;
 
     /**
-     * The maps of the `Wayfinder`.
+     * The maps of the `Waymaker`.
      *
      * @type {Object.<string, Function>}
      * @private
@@ -75,9 +75,9 @@ module.exports = class Wayfinder {
     };
 
     /**
-     * Initializes a new map to the `Wayfinder`.
+     * Initializes a new map to the `Waymaker`.
      *
-     * @param {string} map - The `map` that the `Wayfinder` should match.
+     * @param {string} map - The `map` that the `Waymaker` should match.
      * @param {Function} middleware - The middleware function this `map` should map to.
      * @returns {void}
      * @public

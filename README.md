@@ -1,7 +1,7 @@
-# Wayfinder: An Express Middleware That Routes Based On The Request
+# Waymaker: An Express Middleware That Routes Based On The Request
 
-Wayfinder is currently centered around routing based on domain name, but that is likely to change as the package expands.
-This is due to the fact that Wayfinder has no explicit reason for only resolving based on domain.
+Waymaker is currently centered around routing based on domain name, but that is likely to change as the package expands.
+This is due to the fact that Waymaker has no explicit reason for only resolving based on domain.
 
 ## WARNING
 
@@ -9,9 +9,9 @@ NodeJS must be v12 or higher, as this library does use private fields and arrow 
 
 ## Example
 
-Eventually, I'll write full documentation for Wayfinder, but for now this will do.
+Eventually, I'll write full documentation for Waymaker, but for now this will do.
 
-Create a project and add express and wayfinder.
+Create a project and add express and waymaker.
 
 Create app.js and paste the following code block.
 
@@ -20,10 +20,10 @@ const express = require("express");
 const app = express();
 const port = 80;
 
-const Wayfinder = require("wayfinder");
+const Waymaker = require("waymaker");
 
-const wayfinder = new Wayfinder({
-    matcher: Wayfinder.matchers.SubdomainMatcher,
+const waymaker = new Waymaker({
+    matcher: Waymaker.matchers.SubdomainMatcher,
     match: { baseDomain: "localhost" },
 });
 
@@ -39,11 +39,11 @@ byeRouter.get("/", (req, res) => {
     res.send("Bye!");
 });
 
-wayfinder.register("hi", hiRouter);
+waymaker.register("hi", hiRouter);
 
-wayfinder.register("bye", byeRouter);
+waymaker.register("bye", byeRouter);
 
-app.use(wayfinder.middleware);
+app.use(waymaker.middleware);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);

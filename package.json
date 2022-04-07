@@ -1,5 +1,5 @@
 {
-    "name": "wayfinder",
+    "name": "waymaker",
     "version": "0.0.1",
     "description": "An Express Middleware That Routes Based On Domain",
     "main": "src/index.js",
@@ -10,14 +10,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/DualVipers/WayFinder.git"
+        "url": "git+https://github.com/DualVipers/Waymaker.git"
     },
     "author": "Dual Vipers LLC",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/DualVipers/WayFinder/issues"
+        "url": "https://github.com/DualVipers/Waymaker/issues"
     },
-    "homepage": "https://github.com/DualVipers/WayFinder#readme",
+    "homepage": "https://github.com/DualVipers/Waymaker#readme",
     "devDependencies": {
         "eslint": "8.10.0",
         "eslint-config-prettier": "8.5.0",
