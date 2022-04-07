@@ -14,7 +14,7 @@ module.exports = {
      * @returns {Function | void} Either the match middleware function or void.
      * @public
      */
-    match: function (request, maps, options) {
+    match: (request, maps, options) => {
         const baseDomainLength = options.baseDomainLength;
 
         const baseDomain = options.baseDomain;

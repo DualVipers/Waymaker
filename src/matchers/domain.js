@@ -14,7 +14,7 @@ module.exports = {
      * @returns {Function | void} Either the match middleware function or void.
      * @public
      */
-    match: function (request, maps) {
+    match: (request, maps) => {
         const middleware = maps[request.hostname];
 
         if (!middleware) {
