@@ -36,11 +36,11 @@ module.exports = class Waymaker {
         );
 
         if (middleware) {
-            middleware(req, res, next);
+            return middleware(req, res, next);
         }
 
         if (this.#maps["*"]) {
-            this.#maps["*"](req, res, next);
+            return this.#maps["*"](req, res, next);
         }
 
         next();
