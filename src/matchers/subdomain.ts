@@ -1,25 +1,40 @@
+import type { Request, Response, NextFunction } from "express";
+
 /**
  * A matcher that matches subdomains to their middlewares.
  *
  * @type {WaymakerMatcher}
  * @public
  */
-module.exports = {
+export default {
     /**
      * Matches subdomains to their middlewares based on the provided info.
      *
      * @param {Object} request - The `request` that the `Waymaker` should match.
      * @param {Object.<string, Function>} maps - The maps this `request` should map to.
+     * @param {Object} options - The user provided options for the `WaymakerMatcher`.
      *
      * @returns {Function | void} Either the match middleware function or void.
      * @public
      */
-    match: (request, maps, options) => {
-        const baseDomainLength = options.baseDomainLength;
+    match: (
+        request: Request,
+        maps: {
+            [key: string]: (
+                req: Request,
+                res: Response,
+                next: NextFunction
+            ) => void;
+        },
+        options: { [key: string]: unknown }
+    ): ((req: Request, res: Response, next: NextFunction) => void) | void => {
+        const baseDomainLength: number | void = options.baseDomainLength as
+            | number
+            | void;
 
-        const baseDomain = options.baseDomain;
+        const baseDomain: string = options.baseDomain as string;
 
-        const splitDomain = baseDomain ? baseDomain.split(".") : undefined;
+        const splitDomain = baseDomain ? baseDomain.split(".") : [];
 
         const subdomain = baseDomain
             ? request.hostname

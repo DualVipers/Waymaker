@@ -1,11 +1,14 @@
-const domainMatcher = require("./matchers/domain");
+import type { Request, Response, NextFunction } from "express";
+
+import type WaymakerMatcher from "./WaymakerMatcher";
+import domainMatcher from "./matchers/domian";
 
 /**
  * A middleware that routes based on the `maps` provided.
  *
  * @public
  */
-module.exports = class Waymaker {
+export default class Waymaker {
     /**
      * Creates a new `Waymaker` with the given `options`.
      *
@@ -15,9 +18,11 @@ module.exports = class Waymaker {
      *
      * @public
      */
-    constructor(options) {
+    constructor(options?: { [key: string]: unknown }) {
         this.#opts = options || {};
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         this.#matcher = this.#opts.matcher || domainMatcher;
     }
 
@@ -28,10 +33,16 @@ module.exports = class Waymaker {
      *
      * @public
      */
-    middleware = (req, res, next) => {
+    middleware: (req: Request, res: Response, next: NextFunction) => void = (
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ): ((req: Request, res: Response, next: NextFunction) => void) | void => {
         const middleware = this.#matcher.match(
             req,
             this.#maps,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             this.#opts.match || {}
         );
 
@@ -52,7 +63,7 @@ module.exports = class Waymaker {
      * @type {Object}
      * @private
      */
-    #opts;
+    #opts: { [key: string]: unknown };
 
     /**
      * The matching algorithm of the `Waymaker`.
@@ -60,7 +71,7 @@ module.exports = class Waymaker {
      * @type {WaymakerMatcher}
      * @private
      */
-    #matcher;
+    #matcher: WaymakerMatcher;
 
     /**
      * The maps of the `Waymaker`.
@@ -68,8 +79,14 @@ module.exports = class Waymaker {
      * @type {Object.<string, Function>}
      * @private
      */
-    #maps = {
-        "*": function (req, res, next) {
+    #maps: {
+        [key: string]: (
+            req: Request,
+            res: Response,
+            next: NextFunction
+        ) => void;
+    } = {
+        "*": (req: Request, res: Response, next: NextFunction) => {
             next();
         },
     };
@@ -82,7 +99,10 @@ module.exports = class Waymaker {
      * @returns {void}
      * @public
      */
-    register = (map, middleware) => {
+    register = (
+        map: string,
+        middleware: (req: Request, res: Response, next: NextFunction) => void
+    ): void => {
         this.#maps[map] = middleware;
     };
-};
+}
