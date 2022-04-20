@@ -7,7 +7,8 @@
     "scripts": {
         "build": "tsc -b -v",
         "style": "prettier --check .",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "prepublishOnly": "yarn build"
     },
     "repository": {
         "type": "git",
