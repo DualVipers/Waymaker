@@ -1,6 +1,6 @@
 {
     "name": "waymaker",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "An Express Middleware That Routes Based On Domain",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
